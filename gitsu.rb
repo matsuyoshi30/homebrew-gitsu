@@ -5,20 +5,25 @@
 class Gitsu < Formula
   desc "Switch git user easily"
   homepage "https://github.com/matsuyoshi30/gitsu"
-  version "0.2.1"
+  version "0.3.0"
   bottle :unneeded
 
-  if OS.mac? && Hardware::CPU.intel?
-    url "https://github.com/matsuyoshi30/gitsu/releases/download/v0.2.1/gitsu_0.2.1_darwin_x86_64.tar.gz"
-    sha256 "72ddfbb339fa4f4617bc7a05310b2cf62051e48b4999230cf52609dc0152d9ce"
+  on_macos do
+    if Hardware::CPU.intel?
+      url "https://github.com/matsuyoshi30/gitsu/releases/download/v0.3.0/gitsu_0.3.0_darwin_x86_64.tar.gz"
+      sha256 "ee18911a7900e377b2a5b33361b41b6205e774fa2ec94bae4dc0e52a9687ec39"
+    end
   end
-  if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/matsuyoshi30/gitsu/releases/download/v0.2.1/gitsu_0.2.1_linux_x86_64.tar.gz"
-    sha256 "9ddad6a63d32b91a21c518e413f29b1d92e1a64f57a50595dcb80cdaf3dc8b0b"
-  end
-  if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://github.com/matsuyoshi30/gitsu/releases/download/v0.2.1/gitsu_0.2.1_linux_arm64.tar.gz"
-    sha256 "c8c7a2c37397509aead395e7659be4c5e10453d1a7c38bfbba01ab9716f653af"
+
+  on_linux do
+    if Hardware::CPU.intel?
+      url "https://github.com/matsuyoshi30/gitsu/releases/download/v0.3.0/gitsu_0.3.0_linux_x86_64.tar.gz"
+      sha256 "454d51e6cc340a1f50282f62633cdc4d914f605aa93118aa597ebef65727d888"
+    end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/matsuyoshi30/gitsu/releases/download/v0.3.0/gitsu_0.3.0_linux_arm64.tar.gz"
+      sha256 "f294a56aed6234aacf67385547e7324d0df4913bc34a4bcfa7d94b333933e048"
+    end
   end
 
   def install
