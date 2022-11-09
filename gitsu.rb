@@ -5,32 +5,43 @@
 class Gitsu < Formula
   desc "Switch git user easily"
   homepage "https://github.com/matsuyoshi30/gitsu"
-  version "1.0.0"
-  bottle :unneeded
+  version "1.1.0"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/matsuyoshi30/gitsu/releases/download/v1.0.0/gitsu_1.0.0_darwin_x86_64.tar.gz"
-      sha256 "8dd4a47c64aee0b95a09a809db6d00f22b08c18a9f7e61fb586bc2740dc57d48"
-    end
     if Hardware::CPU.arm?
-      url "https://github.com/matsuyoshi30/gitsu/releases/download/v1.0.0/gitsu_1.0.0_darwin_arm64.tar.gz"
-      sha256 "3c0de0b1d8b73a973ccd4fece5ed88eeacffd3eaa9af4c0132f58165c7460e0c"
+      url "https://github.com/matsuyoshi30/gitsu/releases/download/v1.1.0/gitsu_1.1.0_darwin_arm64.tar.gz"
+      sha256 "4b20db4208e215512090b221e2d40eff6b3615c003626abd51b95c340f4ebd53"
+
+      def install
+        bin.install "git-su"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/matsuyoshi30/gitsu/releases/download/v1.1.0/gitsu_1.1.0_darwin_x86_64.tar.gz"
+      sha256 "d209aa3bae0980ebe4873d1fafa1f04d28a10cbf578357e520a2854566f95ec0"
+
+      def install
+        bin.install "git-su"
+      end
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/matsuyoshi30/gitsu/releases/download/v1.0.0/gitsu_1.0.0_linux_x86_64.tar.gz"
-      sha256 "cfbf436e2d73768b600e68eade90d6b11ddbe38e0971231491230724bac821f3"
+      url "https://github.com/matsuyoshi30/gitsu/releases/download/v1.1.0/gitsu_1.1.0_linux_x86_64.tar.gz"
+      sha256 "7ef2c75bb3ee796ee5083c5242f2ca6088178346a02d586d93b4993f387c999e"
+
+      def install
+        bin.install "git-su"
+      end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/matsuyoshi30/gitsu/releases/download/v1.0.0/gitsu_1.0.0_linux_arm64.tar.gz"
-      sha256 "28267b7a012409b956297c2cba484d315e7c0bbdb4732270db0237cf5f05c940"
-    end
-  end
+      url "https://github.com/matsuyoshi30/gitsu/releases/download/v1.1.0/gitsu_1.1.0_linux_arm64.tar.gz"
+      sha256 "94a491f23ecee5419b858d3164da618c6ceba56686e7bbd09718e80fb08c2b01"
 
-  def install
-    bin.install "git-su"
+      def install
+        bin.install "git-su"
+      end
+    end
   end
 end
